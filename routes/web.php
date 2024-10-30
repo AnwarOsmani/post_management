@@ -22,7 +22,7 @@ Route::get('/postal-codes/search', [PostalCodeController::class, 'search'])->nam
 // map
 
 Route::get('/map', function () {
-    return view('map.map');
+    return view('layouts.map');
 })->name('map');
 
 //public user dashboard

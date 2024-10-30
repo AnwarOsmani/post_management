@@ -19,7 +19,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;800&display=swap"
         rel="stylesheet">
 
-
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -28,25 +27,22 @@
     <div class="min-h-screen bg-gray-100">
         @include(\App\Helpers\NavigationHelper::getNavigationView())
 
-        <nav class="bg-white  text-gray-900 pt-3 pb-2 flex items-center fixed top-0 left-0 z-[1000]">
-            <div class="flex items-center space-x-4">
-                <!-- Sidebar Toggle Button -->
-                <span id="toggleSidebar" class="text-3xl cursor-pointer" onclick="toggleSidebar()">
-                    <i class="bi bi-filter-left  text-gray-900  rounded-md bg-white"></i>
-                </span>
-
-            </div>
-        </nav>
-
-        <div class="relative h-screen w-full pt-[61px]">
-            <x-map.sidebar />
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+        <div class="bg-white text-gray-900 pt-3 pb-2 flex items-center fixed top-0 left-0 w-full z-[1000] h-[61px]">
+            <!-- Sidebar Toggle Button -->
+            <span id="toggleSidebar" class="text-3xl cursor-pointer" onclick="toggleSidebar()">
+                <i class="bi bi-filter-left text-gray-900 rounded-md bg-white"></i>
+            </span>
         </div>
 
-
+        <div class="relative pt-[61px] w-full" style="height: calc(100vh - 61px);">
+            <x-map.sidebar />
+            <!-- Page Content -->
+            <main class="h-full">
+                <div id="map" class="h-full w-full" style="height: 100%;">
+                    <!-- Leaflet Map will be rendered here -->
+                </div>
+            </main>
+        </div>
     </div>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -64,7 +60,6 @@
         }
     </script>
     <script src="{{ asset('js/map.js') }}"></script>
-    <script src="{{ asset('js/dropdown.js') }}"></script>
 </body>
 
 </html>
